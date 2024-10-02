@@ -346,6 +346,17 @@ zone "2.72.10.in-addr.arpa" {
 
 5. `service bind9 restart`
 6. Masuk web console client (yang gambar laptop)
-7. Pastiin
-
+7. Pastiin udah ada nameserver dari DNS Slavenya
+   `nameserver IP Majapahit`
+   disini IP Majapahit ku `10.72.2.5`
+   cek `cat /etc/resolv.conf`![alt text](image-6.png)
+8. Masuk web console Sriwijaya
+9. `service bind9 stop`
+10. Masuk web console client (yang gambar laptop)
+11. coba ping salah satu domain
+    `ping sudarsana.it17.com`
+    ![alt text](image-5.png)
+12. Kalo udah berhasil, nyalain lagi DNS Sriwijaya
+13. Masuk web console Sriwijaya
+14. `service bind9 start`
 <!-- ![alt text](image-7.png) -->
