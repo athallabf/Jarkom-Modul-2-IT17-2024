@@ -2,7 +2,7 @@
 
 ## PERSISTENT DISK (ALL DEVICES) IMPORTANT
 
-on your terminal run
+jalanin ini sekali aja di SEMUA NODES (kecuali Nusantara)
 
 ```
 cp -r /etc /root/etc-persistent
@@ -38,13 +38,15 @@ mount --bind /root/usr-persistent /usr
 mount --bind /root/var-persistent /var
 ```
 
-misal ke reset:
+cara penggunaan:
+misal ke reset tinggal jalanin
 
 ```
 bash /root/restore.sh
 ```
 
-run ketika ke reset aja
+Q: Emang bakal ke reset?
+A: Klo engga berarti keren
 
 ## TOPOLOGY
 
@@ -294,6 +296,8 @@ dibalik jadi
    ![alt text](image-8.png)
    Penjelasan lanjutan:
    Bisa dilihat klo `4` nya ditulis disitu
+   NOTES: perhatikan titik setelah com.
+
 7. `service bind9 restart`
 8. Masuk web console client (yang gambar laptop)
 9. `apt install dnsutils -y`
@@ -359,4 +363,17 @@ zone "2.72.10.in-addr.arpa" {
 12. Kalo udah berhasil, nyalain lagi DNS Sriwijaya
 13. Masuk web console Sriwijaya
 14. `service bind9 start`
+
+## SOAL 8
+
 <!-- ![alt text](image-7.png) -->
+
+1. Masuk web console Sriwijaya
+2. `cd /etc/bind/it17`
+3. `vi sudarsana.it17.com`
+   tambahin kek baris paling bawah
+   ![alt text](image-10.png)
+   NOTES: Perhatikan IP dibaris terakhir, gunakan IP dari Bedahulu buat bagian `cakra`
+4. `service bind9 restart`
+5. Masuk web console client (yang gambar laptop)
+6. `ping cakra.sudarsana.it17.com`
