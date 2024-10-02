@@ -46,6 +46,10 @@ misal ke reset tinggal jalanin
 bash /root/restore.sh
 ```
 
+IMPORTANT
+Klo habis pake restore.sh, service harus distart manual
+contoh: service bind9 start
+
 Q: Emang bakal ke reset?
 A: Klo engga berarti keren
 
@@ -553,3 +557,5 @@ zone "panah.pasopati.it17.com" {
 7. `ping google.com`
 
    ![alt text](image-17.png)
+
+## SOAL 12
