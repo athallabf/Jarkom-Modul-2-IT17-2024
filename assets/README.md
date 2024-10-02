@@ -417,3 +417,5 @@ zone "panah.pasopati.it17.com" {
 13. `service bind9 restart`
 14. Masuk web console client (yang gambar laptop)
 15. `ping panah.pasopati.it17.com`
+
+## SOAL 10
