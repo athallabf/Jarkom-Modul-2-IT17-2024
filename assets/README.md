@@ -143,6 +143,65 @@ up echo nameserver 10.72.1.2 > /etc/resolv.conf
 up echo nameserver 10.72.2.5 >> /etc/resolv.conf
 ```
 
+### Kotalingga
+
+```
+aut0 eth0
+iface eth0 inet static
+  address 10.72.2.4
+  netmask 255.255.255.0
+  gateway 10.72.2.1
+
+up echo nameserver 10.72.1.2 > /etc/resolv.conf
+up echo nameserver 10.72.2.5 >> /etc/resolv.conf
+up echo nameserver 192.168.122.1 >> /etc/resolv.conf
+```
+
+### Samaratungga
+
+```
+auto eth0
+iface eth0 inet static
+  address 10.72.1.5
+  netmask 255.255.255.0
+  gateway 10.72.1.1
+
+up echo nameserver 10.72.1.2 > /etc/resolv.conf
+up echo nameserver 10.72.2.5 >> /etc/resolv.conf
+up echo nameserver 192.168.122.1 >> /etc/resolv.conf
+```
+
+### Solok
+
+```
+auto eth0
+iface eth0 inet static
+  address 10.72.1.3
+  netmask 255.255.255.0
+  gateway 10.72.1.1
+
+up echo nameserver 10.72.1.2 > /etc/resolv.conf
+up echo nameserver 10.72.2.5 >> /etc/resolv.conf
+up echo nameserver 192.168.122.1 >> /etc/resolv.conf
+```
+
+### Sanjaya
+
+```
+auto eth0
+iface eth0 inet static
+  address 10.72.1.4
+  netmask 255.255.255.0
+  gateway 10.72.1.1
+
+up echo nameserver 10.72.1.2 > /etc/resolv.conf
+up echo nameserver 10.72.2.5 >> /etc/resolv.conf
+up echo nameserver 192.168.122.1 >> /etc/resolv.conf
+```
+
+Notes:
+`nameserver 192.168.122.1` hanya digunakan untuk install2 package di awal, nantinya yang punya nameserver itu cuman Majapahit
+
 ## SOAL 2
 
 Masuk ke Web Console Sriwijaya
@@ -402,8 +461,11 @@ zone "2.72.10.in-addr.arpa" {
    NOTES: IP dari `ns1` itu IP dari Majapahit
    ![alt text](image-11.png)
 4. `cd ..`
-5. `vi named.conf.local`
-6. edit zone pasopati jadi begini
+5. `vi named.conf.options`
+   edit jadi kek gini
+   ![alt text](image-14.png)
+6. `vi named.conf.local`
+7. edit zone pasopati jadi begini
 
 ```
 zone "pasopati.it17.com" {
@@ -415,8 +477,16 @@ zone "pasopati.it17.com" {
 };
 ```
 
-NOTES: `10.72.2.5` itu IP dari Majapahit 7. `service bind9 restart` 8. Masuk web console Majapahit 9. `cd /etc/bind` 10. `vi named.check.conf`
-tambahin zone baru
+NOTES: `10.72.2.5` itu IP dari Majapahit
+
+8. `service bind9 restart`
+9. Masuk web console Majapahit
+10. `cd /etc/bind`
+11. `vi named.conf.options`
+    edit jadi kek gini
+    ![alt text](image-14.png)
+12. `vi named.conf.local`
+    tambahin zone baru
 
 ```
 zone "panah.pasopati.it17.com" {
@@ -425,13 +495,13 @@ zone "panah.pasopati.it17.com" {
 };
 ```
 
-11. `mkdir panah && cd panah`
-12. `cp ../db.local panah.pasopati.it17.com`
+13. `mkdir panah && cd panah`
+14. `cp ../db.local panah.pasopati.it17.com`
     trus ganti jadi kek gini
     ![alt text](image-13.png)
     Notes: `10.72.2.4` itu IP dari Kotalingga
-13. `service bind9 restart`
-14. Masuk web console client (yang gambar laptop)
-15. `ping panah.pasopati.it17.com`
+15. `service bind9 restart`
+16. Masuk web console client (yang gambar laptop)
+17. `ping panah.pasopati.it17.com`
 
 ## SOAL 10
