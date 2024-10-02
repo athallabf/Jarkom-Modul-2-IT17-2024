@@ -387,7 +387,7 @@ zone "2.72.10.in-addr.arpa" {
    NOTES: IP dari `ns1` itu IP dari Majapahit
    ![alt text](image-11.png)
 4. `cd ..`
-5. `vi named.check.conf`
+5. `vi named.conf.local`
 6. edit zone pasopati jadi begini
 
 ```
