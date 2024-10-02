@@ -530,6 +530,7 @@ zone "panah.pasopati.it17.com" {
 7. `service bind9 restart`
 8. Masuk web console client (yang gambar laptop)
 9. `ping log.panah.pasopati.it17.com`
+10. Kalo gabisa, ubah urutan nameserver di `/etc/resolv.conf` IP Majapahit dipaling atas
 
 ## SOAL 11
 
