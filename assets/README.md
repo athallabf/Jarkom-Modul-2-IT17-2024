@@ -29,9 +29,9 @@ isi begini:
 
 ```
 #!/bin/bash
-cp -r /root/etc-persistent/_ /etc/
-cp -r /root/usr-persistent/_ /usr/
-cp -r /root/var-persistent/\* /var/
+cp -r /root/etc-persistent/* /etc/
+cp -r /root/usr-persistent/* /usr/
+cp -r /root/var-persistent/* /var/
 
 mount --bind /root/etc-persistent /etc
 mount --bind /root/usr-persistent /usr
@@ -244,7 +244,7 @@ Untuk mengecek error pada config:
 Untuk mengecek error pada config zone:
 
 ```
-named-checkzone namadomain.itxx.com /etc/bind/itxx/namadomain.itxx.com
+named-checkzone namazone.itxx.com /etc/bind/itxx/namazone.itxx.com
 ```
 
 ## SOAL 4
@@ -303,5 +303,49 @@ dibalik jadi
     ![alt text](image-9.png)
 
 ## SOAL 7
+
+1. Masuk web console Majapahit
+2. `apt install bind9 dnsutils -y`
+3. `cd /etc/bind`
+4. `vi named.conf.local`
+
+Penjelasan:
+
+```
+...
+masters {IP SRIWiJAYA;};
+...
+```
+
+```
+
+zone "sudarsana.it17.com" {
+        type slave;
+        masters {10.72.1.2;};
+        file "/var/lib/bind/it17/sudarsana.it17.com";
+};
+
+zone "pasopati.it17.com" {
+        type slave;
+        masters {10.72.1.2;};
+        file "/var/lib/bind/it17/pasopati.it17.com";
+};
+
+zone "rujapala.it17.com" {
+        type slave;
+        masters {10.72.1.2;};
+        file "/var/lib/bind/it17/rujapala.it17.com";
+};
+
+zone "2.72.10.in-addr.arpa" {
+        type slave;
+        masters {10.72.1.2;};
+        file "/var/lib/bind/it17/2.72.10.in-addr.arpa";
+};
+```
+
+5. `service bind9 restart`
+6. Masuk web console client (yang gambar laptop)
+7. Pastiin
 
 <!-- ![alt text](image-7.png) -->
