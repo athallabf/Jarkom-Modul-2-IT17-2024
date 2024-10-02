@@ -3,6 +3,7 @@
 ## PERSISTENT DISK (ALL DEVICES) IMPORTANT
 
 jalanin ini sekali aja di SEMUA NODES (kecuali Nusantara)
+Masuk web console
 
 ```
 cp -r /etc /root/etc-persistent
@@ -85,9 +86,9 @@ iface eth0 inet static
   address 10.72.2.2
   netmask 255.255.255.0
   gateway 10.72.2.1
-
 up echo nameserver 10.72.1.2 > /etc/resolv.conf
 up echo nameserver 10.72.2.5 >> /etc/resolv.conf
+up echo nameserver 192.168.122.1 >> /etc/resolv.conf
 ```
 
 ### Bedahulu
@@ -101,6 +102,7 @@ iface eth0 inet static
 
 up echo nameserver 10.72.1.2 > /etc/resolv.conf
 up echo nameserver 10.72.2.5 >> /etc/resolv.conf
+up echo nameserver 192.168.122.1 >> /etc/resolv.conf
 ```
 
 ### Sriwijaya
@@ -124,8 +126,21 @@ iface eth0 inet static
   netmask 255.255.255.0
   gateway 10.72.2.1
 
-up echo nameserver 192.168.122.1 > /etc/resolv.conf
-up echo nameserver 10.72.1.2 >> /etc/resolv.conf
+up echo nameserver 10.72.1.2 > /etc/resolv.conf
+up echo nameserver 192.168.122.1 >> /etc/resolv.conf
+```
+
+### KenArok
+
+```
+auto eth0
+iface eth0 inet static
+  address 10.72.1.6
+  netmask 255.255.255.0
+  gateway 10.72.1.1
+
+up echo nameserver 10.72.1.2 > /etc/resolv.conf
+up echo nameserver 10.72.2.5 >> /etc/resolv.conf
 ```
 
 ## SOAL 2
@@ -412,6 +427,7 @@ zone "panah.pasopati.it17.com" {
 
 11. `mkdir panah && cd panah`
 12. `cp ../db.local panah.pasopati.it17.com`
+    trus ganti jadi kek gini
     ![alt text](image-13.png)
     Notes: `10.72.2.4` itu IP dari Kotalingga
 13. `service bind9 restart`
