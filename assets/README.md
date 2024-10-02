@@ -377,3 +377,43 @@ zone "2.72.10.in-addr.arpa" {
 4. `service bind9 restart`
 5. Masuk web console client (yang gambar laptop)
 6. `ping cakra.sudarsana.it17.com`
+
+## SOAL 9
+
+1. Masuk web console Sriwijaya
+2. `cd /etc/bind/it17`
+3. `vi pasopati.it17.com`
+   tambahin 2 baris, baris `ns1` sama `panah`
+   NOTES: IP dari `ns1` itu IP dari Majapahit
+   ![alt text](image-11.png)
+4. `cd ..`
+5. `vi named.check.conf`
+6. edit zone pasopati jadi begini
+
+```
+zone "pasopati.it17.com" {
+        type master;
+        notify yes;
+        also-notify {10.72.2.5;};
+        allow-transfer {10.72.2.5;};
+        file "/etc/bind/it17/pasopati.it17.com";
+};
+```
+
+NOTES: `10.72.2.5` itu IP dari Majapahit 7. `service bind9 restart` 8. Masuk web console Majapahit 9. `cd /etc/bind` 10. `vi named.check.conf`
+tambahin zone baru
+
+```
+zone "panah.pasopati.it17.com" {
+        type master;
+        file "/etc/bind/panah/panah.pasopati.it17.com";
+};
+```
+
+11. `mkdir panah && cd panah`
+12. `cp ../db.local panah.pasopati.it17.com`
+    ![alt text](image-13.png)
+    Notes: `10.72.2.4` itu IP dari Kotalingga
+13. `service bind9 restart`
+14. Masuk web console client (yang gambar laptop)
+15. `ping panah.pasopati.it17.com`
