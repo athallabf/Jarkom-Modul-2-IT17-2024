@@ -270,3 +270,38 @@ notes:
 `10.72.2.5` disini itu IP dari Majapahit (DNS SLAVE)
 
 ## SOAL 6
+
+1. Masuk web console Sriwijaya
+2. `cd /etc/bind`
+3. `vi named.conf.local`
+   tambahin zone baru:
+
+```
+zone "2.72.10.in-addr.arpa" {
+  type master;
+  file "/etc/bind/it17/2.72.10.in-addr.arpa";
+};
+```
+
+Penjelasan dikit:
+IP Kotalingga di Topology ku: 10.72.2.4
+dibalik jadi
+2.72.10 (4 nya ilangin disini nanti add di step selanjutnya)
+
+4. `cd it17`
+5. `cp pasopati.it17.com 2.72.10.in-addr.arpa`
+6. samain kek gini
+   ![alt text](image-8.png)
+   Penjelasan lanjutan:
+   Bisa dilihat klo `4` nya ditulis disitu
+7. `service bind9 restart`
+8. Masuk web console client (yang gambar laptop)
+9. `apt install dnsutils -y`
+10. Pastiin udah ada nameserver si DNS di /etc/resolv.conf
+11. `host -t PTR 10.72.2.4`
+    Penjelasan `host -t PTR IPKOTALINGGA`
+    ![alt text](image-9.png)
+
+## SOAL 7
+
+<!-- ![alt text](image-7.png) -->
