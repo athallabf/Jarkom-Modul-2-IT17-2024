@@ -57,6 +57,9 @@ A: Klo engga berarti keren
 
 NOTES:
 IP `10.72.1.2` itu IP Sriwijaya (DNS MASTER)
+
+---
+
 IP `10.72.2.5` itu IP Majapahit (DNS SLAVE)
 
 ### Nusantara
@@ -505,3 +508,25 @@ zone "panah.pasopati.it17.com" {
 17. `ping panah.pasopati.it17.com`
 
 ## SOAL 10
+
+1. Masuk web console Majapahit
+2. `cd /etc/bind`
+3. `vi named.conf.local`
+   tambahin zone
+
+```
+ zone "log.panah.pasopati.it17.com" {
+        type master;
+        file "/etc/bind/panah/log.panah.pasopati.it17.com";
+};
+```
+
+4. `cd panah`
+5. `cp panah.pasopati.it17.com log.panah.pasopati.it17.com`
+6. `vi log.panah.pasopati.it17.com`
+   ganti jadi begini
+   ![alt text](image-15.png)
+   Notes: `10.72.2.4` itu IP dari Kotalingga
+7. `service bind9 restart`
+8. Masuk web console client (yang gambar laptop)
+9. `ping log.panah.pasopati.it17.com`
