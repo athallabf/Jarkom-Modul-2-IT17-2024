@@ -541,10 +541,15 @@ zone "panah.pasopati.it17.com" {
 3. `cd /etc/bind`
 4. `vi named.conf.options`
    ubah bagian `forwarders` jadi kek gini
+
    ![alt text](image-16.png)
+
 5. `service bind9 restart`
 6. Masuk web console node lain (bebas) asalkan file `/etc/resolv.conf` TIDAK ADA `nameserver 192.168.122.1` dan punya `nameserver 10.72.2.5`
    Notes: `10.72.2.5` itu IP Majapahit
+
    ![alt text](image-18.png)
+
 7. `ping google.com`
+
    ![alt text](image-17.png)
