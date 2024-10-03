@@ -559,3 +559,65 @@ zone "panah.pasopati.it17.com" {
    ![alt text](image-17.png)
 
 ## SOAL 12
+
+1. Masuk web console Kotalingga
+2.
+
+```
+apt install lynx unzip apache2 libapache2-mod-wsgi python-dev libapache2-mod-php7.0 -y
+```
+
+3. `vi /var/www/html/index.php`
+   lalu masukkan:
+
+```php
+<?php
+$hostname = gethostname();
+$date = date('Y-m-d H:i:s');
+$php_version = phpversion();
+$username = get_current_user();
+
+
+
+echo "Hello World!<br>";
+echo "Saya adalah: $username<br>";
+echo "Saat ini berada di: $hostname<br>";
+echo "Versi PHP yang saya gunakan: $php_version<br>";
+echo "Tanggal saat ini: $date<br>";
+?>
+```
+
+4. `rm /var/www/html/index.html`
+5. `service apache2 start`
+6. `lynx localhost`
+   ![alt text](image-20.png)
+
+## SOAL 13
+
+1. Masuk web console Solok
+2.
+
+```
+apt install lynx apache2 apache2-utils php7.0 php7.0-fpm -y
+```
+
+3.
+
+```
+a2enmod proxy proxy_balancer proxy_http lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness rewrite
+```
+
+4. `cd /etc/apache2/sites-available`
+5. `vi 000-default.conf`
+   ubah jadi seperti ini
+   ![alt text](image-21.png)
+   Notes:
+   IP `10.72.2.2` itu Tanjungkulai
+   IP `10.72.2.2` itu Bedahulu
+   IP `10.72.2.2` itu Kotalingga
+6. `service apache2 start`
+7. `lynx localhost` (lakukan 3 kali)
+   ![alt text](image-22.png)
+   ![alt text](image-23.png)
+   ![alt text](image-24.png)
+   Jika berhasil maka nanti akan menampilkan ketiga webserver
