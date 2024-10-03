@@ -621,3 +621,32 @@ a2enmod proxy proxy_balancer proxy_http lbmethod_byrequests lbmethod_bytraffic l
    ![alt text](image-23.png)
    ![alt text](image-24.png)
    Jika berhasil maka nanti akan menampilkan ketiga webserver
+
+## SOAL 14
+
+Kerjain soal no 15 dlu (apache benchmarking)
+
+## SOAL 15
+
+1. Masuk web console Solok
+2. Pertama kita akan benchmark load balancer apache2 dengan algoritma defaultnya (byrequests)
+   `ab -n 100 -c 10 http://127.0.0.1/
+   ![alt text](image-25.png)
+3. Sekarang ganti algoritmanya
+4. `cd /etc/apache2/sites-available` `vi 000-default.con`
+   ![alt text](image-26.png)
+   Perhatikan bagian `ProxySet`, disini kita bikin lbmethod jadi bytraffic
+5. `service apache2 restart`
+6. lalu kita test lagi
+   `ab -n 100 -c 10 http://127.0.0.1/`
+
+![alt text](image-30.png)
+
+7. Sekarang ganti lagi, `vi 000-default.conf`
+   ![alt text](image-28.png)
+   kita ganti jadi bybusyness
+
+8. lalu kita test lagi
+   `ab -n 100 -c 10 http://127.0.0.1/`
+   ![alt text](image-29.png)
+9. Sekarang kita ganti load balancer dan webserver jadi nginx (SOAL 14)
