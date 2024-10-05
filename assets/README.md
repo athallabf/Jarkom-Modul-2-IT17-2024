@@ -591,6 +591,7 @@ echo "Tanggal saat ini: $date<br>";
 5. `service apache2 start`
 6. `lynx localhost`
    ![alt text](image-20.png)
+7. Lakukan hal yang sama untuk Tanjungkulai dan Bedahulu
 
 ## SOAL 13
 
@@ -630,7 +631,7 @@ Kerjain soal no 15 dlu (apache benchmarking)
 
 1. Masuk web console Solok
 2. Pertama kita akan benchmark load balancer apache2 dengan algoritma defaultnya (byrequests)
-   `ab -n 100 -c 10 http://127.0.0.1/
+   `ab -n 100 -c 10 http://127.0.0.1/`
    ![alt text](image-25.png)
 3. Sekarang ganti algoritmanya
 4. `cd /etc/apache2/sites-available` `vi 000-default.con`
@@ -650,3 +651,6 @@ Kerjain soal no 15 dlu (apache benchmarking)
    `ab -n 100 -c 10 http://127.0.0.1/`
    ![alt text](image-29.png)
 9. Sekarang kita ganti load balancer dan webserver jadi nginx (SOAL 14)
+10. todo
+
+## SOAL 16
