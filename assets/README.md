@@ -679,10 +679,12 @@ Kerjain soal no 15 dlu (apache benchmarking)
     lalu tambahkan line `ServerName solok.it17.com`
     bebas ditaro dibagian mana aja
     ![alt text](image-34.png)
-11. `a2ensite solok.it17.com`
-12. `service apache2 restart`
-13. Masuk ke web console client bebas (yang gambar laptop)
-14. `cat /etc/resolv.conf`
+
+11. `a2dissite 000-default.com`
+12. `a2ensite solok.it17.com`
+13. `service apache2 restart`
+14. Masuk ke web console client bebas (yang gambar laptop)
+15. `cat /etc/resolv.conf`
     ![alt text](image-35.png)
     pastikan DNS Sriwijaya ada paling atas
 
@@ -691,7 +693,7 @@ Kerjain soal no 15 dlu (apache benchmarking)
     - `10.72.1.2` IP SRIWIJAYA
     - `10.72.2.5` IP MAJAPAHIT
 
-15. `lynx solok.it17.com`
+16. `lynx solok.it17.com`
     coba 3 kali disini
     ![alt text](image-22.png)
     ![alt text](image-23.png)
@@ -770,11 +772,16 @@ Kerjain soal no 15 dlu (apache benchmarking)
 
 3. `a2ensite sekiantterimakasih.it17.com`
 4. `cd /var/www/`
-5. curl -L -o dirlist.zip --insecure "https://drive.google.com/uc?export=download&id=1JGk8b-tZgzAOnDqTx5B3F9qN6AyNs7Zy"
+5.
+
+```
+   curl -L -o dirlist.zip --insecure "https://drive.google.com/uc?export=download&id=1JGk8b-tZgzAOnDqTx5B3F9qN6AyNs7Zy"
+```
+
 6. `apt install unzip && unzip dirlist.zip`
 7. `mkdir sekiantterimakasih.it17.com`
 8. `cd dir-listing`
-9. `cd worker2 ../sekiantterimakasih.it17.com`
+9. `cp worker2 ../sekiantterimakasih.it17.com`
 10. Masuk web console Sriwijaya
 11. `cd /etc/bind/ && vi named.conf.local`
 12. tambahkan zone baru
@@ -783,18 +790,31 @@ Kerjain soal no 15 dlu (apache benchmarking)
 14. `vi sekiantterimakasih.it17.com`
 
 ```
+
 ; BIND data file for local loopback interface
 ;
-$TTL	604800
-@	IN	SOA	sekiantterimakasih.it17.com. root.solok.it17.com. (
-			      2		; Serial
-			 604800		; Refresh
-			  86400		; Retry
-			2419200		; Expire
-			 604800 )	; Negative Cache TTL
+$TTL 604800
+@ IN SOA sekiantterimakasih.it17.com. root.solok.it17.com. (
+2 ; Serial
+604800 ; Refresh
+86400 ; Retry
+2419200 ; Expire
+604800 ) ; Negative Cache TTL
 ;
-@	IN	NS	sekiantterimakasih.it17.com.
-@	IN	A	10.72.2.3 ; IP DARI BEDAHULU
-@	IN	AAAA	::1
-www	IN	CNAME	sekiantterimakasih.it17.com.
+@ IN NS sekiantterimakasih.it17.com.
+@ IN A 10.72.2.3 ; IP DARI BEDAHULU
+@ IN AAAA ::1
+www IN CNAME sekiantterimakasih.it17.com.
+
+```
+
+Notes: `10.72.2.3` itu IP Bedahulu, sesuai kalian tadi setting directory listingnya dimana directorynya tadi
+
+15. `service bind9 restart`
+16. Masuk ke client (yang gambar laptop)
+17. `lynx sekiantterimakasih.it17.com/worker2`
+    ![alt text](image-51.png)
+
+```
+
 ```
