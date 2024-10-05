@@ -628,7 +628,93 @@ a2enmod proxy proxy_balancer proxy_http lbmethod_byrequests lbmethod_bytraffic l
 
 ## SOAL 14
 
-Kerjain soal no 15 dlu (apache benchmarking)
+#### Kerjain soal no. 15 dlu (apache benchmarking)
+
+1. Setelah no. 15 lanjut
+2. Masuk web console Solok
+3. `service apache2 stop`
+4. `apt install nginx -y`
+5. `cd /etc/nginx/sites-available`
+6. `unlink /etc/nginx/sites-enabled/default`
+7. `vi load-balancer` dan isi dengan:
+
+```
+upstream workers {
+        server 10.72.2.2;
+        server 10.72.2.3;
+        server 10.72.2.4;
+}
+
+server {
+        listen 80;
+        server_name 10.72.1.3;
+
+        location / {
+        proxy_pass http://workers;
+        }
+}
+```
+
+Notes:
+
+- `10.72.1.3` IP dari Solok
+- `10.72.2.2` IP dari Tanjungulai
+- `10.72.2.3` IP dari Bedahulu
+- `10.72.2.4` IP dari Kotalingga
+
+8.
+
+```
+ln -s /etc/nginx/sites-available/load-balancer /etc/nginx/sites-enabled/
+```
+
+9. `service nginx start`
+10. Masuk web console dari Tanjungkulai, Bedahulu, Kotalingga (konfigurasi dan step sama)
+11. `apt install nginx php7.0 php7.0-fpm -y`
+12. `cd /etc/nginx/sites-available`
+13. `vi web` lalu isi dengan
+
+```
+server {
+  listen 80;
+
+  root /var/www/html;
+
+  index index.php index.html index.htm;
+
+  server_name _;
+
+  location / {
+    try_files $uri $uri/ /index.php?$query_string;
+  }
+
+  location ~ \.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+  }
+
+  location ~ /\.ht {
+    deny all;
+  }
+
+  error_log /var/log/nginx/web_error.log;
+  access_log /var/log/nginx/web_access.log;
+
+
+}
+```
+
+14. `unlink /etc/nginx/sites-enabled/default`
+15.
+
+```
+ln -s /etc/nginx/sites-available/web /etc/nginx/sites-enabled/
+```
+
+16. `service apache2 stop`
+17. `service nginx start`
+18. `service php7.0-fpm start`
+19. BALIK KE SOAL 15 no.10
 
 ## SOAL 15
 
@@ -636,25 +722,38 @@ Kerjain soal no 15 dlu (apache benchmarking)
 2. Pertama kita akan benchmark load balancer apache2 dengan algoritma defaultnya (byrequests)
    `ab -n 100 -c 10 http://127.0.0.1/`
    ![alt text](image-25.png)
+
+   simpan hasil benchmark (bebas mau di ss ato di copy)
+
 3. Sekarang ganti algoritmanya
 4. `cd /etc/apache2/sites-available` `vi 000-default.con`
    ![alt text](image-26.png)
    Perhatikan bagian `ProxySet`, disini kita bikin lbmethod jadi bytraffic
 5. `service apache2 restart`
-6. lalu kita test lagi
+6. lalu kita benchmark lagi
    `ab -n 100 -c 10 http://127.0.0.1/`
 
 ![alt text](image-30.png)
+simpan hasil benchmark
 
 7. Sekarang ganti lagi, `vi 000-default.conf`
    ![alt text](image-28.png)
    kita ganti jadi bybusyness
 
-8. lalu kita test lagi
+simpan hasil benchmark
+
+8. lalu kita benchmark lagi
    `ab -n 100 -c 10 http://127.0.0.1/`
    ![alt text](image-29.png)
-9. Sekarang kita ganti load balancer dan webserver jadi nginx (SOAL 14)
-10. todo
+9. Sekarang kita ganti load balancer dan webserver jadi nginx BALIK KE SOAL 14
+10. Setelah lanjut dari SOAL 14
+11. Masuk web console Solok
+12. benchmark lagi `ab -n 100 -c 10 http://127.0.0.1/`
+    simpan hasil benchmark
+
+13. `vi /etc/nginx/sites-available/web`
+    tambahin `least_conn;`
+    ![alt text](image-53.png)
 
 ## SOAL 16
 
@@ -808,13 +907,9 @@ www IN CNAME sekiantterimakasih.it17.com.
 
 ```
 
-Notes: `10.72.2.3` itu IP Bedahulu, sesuai kalian tadi setting directory listingnya dimana directorynya tadi
+Notes: `10.72.2.3` itu IP Bedahulu, sesuai kalian tadi settingnya di webserver mana (Kotalingga atau Bedahulu atau Tanjungkulai)
 
 15. `service bind9 restart`
 16. Masuk ke client (yang gambar laptop)
 17. `lynx sekiantterimakasih.it17.com/worker2`
     ![alt text](image-51.png)
-
-```
-
-```
