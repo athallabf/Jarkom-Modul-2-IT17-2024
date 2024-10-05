@@ -458,6 +458,7 @@ zone "2.72.10.in-addr.arpa" {
 4. `service bind9 restart`
 5. Masuk web console client (yang gambar laptop)
 6. `ping cakra.sudarsana.it17.com`
+   ![alt text](assets/image-54.png)
 
 ## SOAL 9
 
