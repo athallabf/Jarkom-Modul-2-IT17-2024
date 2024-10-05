@@ -617,12 +617,14 @@ a2enmod proxy proxy_balancer proxy_http lbmethod_byrequests lbmethod_bytraffic l
    IP `10.72.2.2` itu Bedahulu
    IP `10.72.2.2` itu Kotalingga
 6. `service apache2 start`
-7. `lynx localhost` (lakukan 3 kali)
+7. Masuk web console client (yang gambar laptop)
+8. `apt install lynx -y`
+9. `lynx localhost` (lakukan 3 kali)
    ![alt text](image-22.png)
    ![alt text](image-23.png)
    ![alt text](image-24.png)
    Jika berhasil maka nanti akan menampilkan ketiga webserver
-   perhatikan disini berubah-rubah dari Tanjungkulai lalu Bedahulu lalu Kotalingga, disini menunjukkan LB berhasil
+   perhatikan disini berubah-rubah secara random dari Tanjungkulai lalu Bedahulu lalu Kotalingga, disini menunjukkan LB berhasil
 
 ## SOAL 14
 
