@@ -605,7 +605,7 @@ apt install lynx apache2 apache2-utils php7.0 php7.0-fpm -y
 3.
 
 ```
-a2enmod proxy proxy_balancer proxy_http lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness rewrite
+a2enmod proxy proxy_balancer proxy_http lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness
 ```
 
 4. `cd /etc/apache2/sites-available`
@@ -715,3 +715,29 @@ Kerjain soal no 15 dlu (apache benchmarking)
    ![alt text](image-39.png)
 10. `lynx solok.it17.com:4696`
     ![alt text](image-40.png)
+
+## SOAL 18
+
+1. Masuk web console Solok
+2. `cd /etc/apache2/sites-available`
+3. `vi redirect.conf` dan isi seperti ini
+
+```
+<VirtualHost *:80>
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        RewriteEngine On
+        RewriteRule ^(.*)$ http://solok.it17.com:4696/$1 [R=301,L]
+</VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+```
+
+4. `a2enmod rewrite`
+5. `a2ensite redirect.conf`
+6. `service apache2 restart`
+7. Masuk web console client (yang gambar laptop)
+8. `lynx 10.72.1.3` IP dari Solok
+   ![alt text](image-45.png)
+   ![alt text](image-48.png)
