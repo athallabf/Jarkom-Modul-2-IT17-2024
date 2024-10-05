@@ -678,14 +678,17 @@ Kerjain soal no 15 dlu (apache benchmarking)
     bebas ditaro dibagian mana aja
     ![alt text](image-34.png)
 
-11. service bind9 restart
+11. `service apache2 restart`
 12. Masuk ke web console client bebas (yang gambar laptop)
 13. `cat /etc/resolv.conf`
     ![alt text](image-35.png)
     pastikan DNS Sriwijaya ada paling atas
+
     Notes:
+
     - `10.72.1.2` IP SRIWIJAYA
     - `10.72.2.5` IP MAJAPAHIT
+
 14. `lynx solok.it17.com`
     coba 3 kali disini
     ![alt text](image-22.png)
