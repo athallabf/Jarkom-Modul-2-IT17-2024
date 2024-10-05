@@ -880,7 +880,7 @@ simpan hasil benchmark
 6. `apt install unzip && unzip dirlist.zip`
 7. `mkdir sekiantterimakasih.it17.com`
 8. `cd dir-listing`
-9. `cp worker2 ../sekiantterimakasih.it17.com`
+9. `mv worker2 ../sekiantterimakasih.it17.com`
 10. Masuk web console Sriwijaya
 11. `cd /etc/bind/ && vi named.conf.local`
 12. tambahkan zone baru
