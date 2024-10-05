@@ -741,3 +741,60 @@ Kerjain soal no 15 dlu (apache benchmarking)
 8. `lynx 10.72.1.3` IP dari Solok
    ![alt text](image-45.png)
    ![alt text](image-48.png)
+
+## SOAL 19 dan SOAL 20
+
+1. Masuk web console worker (Bebas antara Tanjungkulai, Bedahulu, Kotalingga), disini aku pake Bedahulu
+2. `cd /etc/apache2/sites-available`
+3. `vi sekiantterimakasih.it17.com.conf`
+
+```
+<VirtualHost *:80>
+
+        ServerName sekiantterimakasih.it17.com
+        ServerAlias www.sekiantterimakasih.it17.com
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/sekiantterimakasih.it17.com
+
+        <Directory "/var/www/sekiantterimakasih.it17.com/worker2">
+                Options +Indexes
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+```
+
+3. `a2ensite sekiantterimakasih.it17.com`
+4. `cd /var/www/`
+5. curl -L -o dirlist.zip --insecure "https://drive.google.com/uc?export=download&id=1JGk8b-tZgzAOnDqTx5B3F9qN6AyNs7Zy"
+6. `apt install unzip && unzip dirlist.zip`
+7. `mkdir sekiantterimakasih.it17.com`
+8. `cd dir-listing`
+9. `cd worker2 ../sekiantterimakasih.it17.com`
+10. Masuk web console Sriwijaya
+11. `cd /etc/bind/ && vi named.conf.local`
+12. tambahkan zone baru
+    ![alt text](image-50.png)
+13. `cd it17`
+14. `vi sekiantterimakasih.it17.com`
+
+```
+; BIND data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	sekiantterimakasih.it17.com. root.solok.it17.com. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	sekiantterimakasih.it17.com.
+@	IN	A	10.72.2.3 ; IP DARI BEDAHULU
+@	IN	AAAA	::1
+www	IN	CNAME	sekiantterimakasih.it17.com.
+```
