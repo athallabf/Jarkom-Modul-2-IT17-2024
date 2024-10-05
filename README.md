@@ -55,7 +55,7 @@ A: Klo engga berarti keren
 
 ## TOPOLOGY
 
-![alt text](image.png)
+![alt text](assets/image.png)
 
 ## SOAL 1
 
@@ -241,13 +241,13 @@ zone "sudarsana.it17.com" {
 7. `vi sudarsana.it17.com`
 
 Nanti tampilannya seperti ini
-![sudarsana.it17.com](image-1.png)
+![sudarsana.it17.com](assets/image-1.png)
 
 Ubah menjadi seperti ini
-![alt text](image-2.png)
+![alt text](assets/image-2.png)
 
 8. `service bind9 restart`
-   ![alt text](image-3.png)
+   ![alt text](assets/image-3.png)
 
 Untuk mengecek error pada config:
 `named-checkconf`
@@ -261,7 +261,7 @@ named-checkzone namadomain.itxx.com /etc/bind/itxx/namadomain.itxx.com
 9. Masuk ke web console client bebas (yang gambar laptop)
 
 10. Pastiin udah ada nameserver dari DNSnya
-    cek `cat /etc/resolv.conf`![alt text](image-6.png)
+    cek `cat /etc/resolv.conf`![alt text](assets/image-6.png)
 11. Kalo GAADA di tambahin
 
     ```
@@ -277,7 +277,7 @@ named-checkzone namadomain.itxx.com /etc/bind/itxx/namadomain.itxx.com
     `10.72.2.5` disini itu IP dari Majapahit (DNS SLAVE)
 
 12. ping sudarsana.it17.com
-    ![alt text](image-5.png)
+    ![alt text](assets/image-5.png)
     yey berhasil
 
 ## SOAL 3
@@ -315,11 +315,11 @@ zone "pasopati.it17.com" {
 5. `vi pasopati.it17.com`
 
 Nanti tampilannya seperti ini
-![alt text](image-2.png)
+![alt text](assets/image-2.png)
 
 Ubah menjadi seperti ini
-![alt text](image-4.png) 8. `service bind9 restart`
-![alt text](image-3.png)
+![alt text](assets/image-4.png) 8. `service bind9 restart`
+![alt text](assets/image-3.png)
 
 Untuk mengecek error pada config:
 `named-checkconf`
@@ -374,7 +374,7 @@ dibalik jadi
 4. `cd it17`
 5. `cp pasopati.it17.com 2.72.10.in-addr.arpa`
 6. samain kek gini
-   ![alt text](image-8.png)
+   ![alt text](assets/image-8.png)
    Penjelasan lanjutan:
    Bisa dilihat klo `4` nya ditulis disitu
    NOTES: perhatikan titik setelah com.
@@ -385,7 +385,7 @@ dibalik jadi
 10. Pastiin udah ada nameserver si DNS di /etc/resolv.conf
 11. `host -t PTR 10.72.2.4`
     Penjelasan `host -t PTR IPKOTALINGGA`
-    ![alt text](image-9.png)
+    ![alt text](assets/image-9.png)
 
 ## SOAL 7
 
@@ -434,13 +434,13 @@ zone "2.72.10.in-addr.arpa" {
 7. Pastiin udah ada nameserver dari DNS Slavenya
    `nameserver IP Majapahit`
    disini IP Majapahit ku `10.72.2.5`
-   cek `cat /etc/resolv.conf`![alt text](image-6.png)
+   cek `cat /etc/resolv.conf`![alt text](assets/image-6.png)
 8. Masuk web console Sriwijaya
 9. `service bind9 stop`
 10. Masuk web console client (yang gambar laptop)
 11. coba ping salah satu domain
     `ping sudarsana.it17.com`
-    ![alt text](image-5.png)
+    ![alt text](assets/image-5.png)
 12. Kalo udah berhasil, nyalain lagi DNS Sriwijaya
 13. Masuk web console Sriwijaya
 14. `service bind9 start`
@@ -453,7 +453,7 @@ zone "2.72.10.in-addr.arpa" {
 2. `cd /etc/bind/it17`
 3. `vi sudarsana.it17.com`
    tambahin kek baris paling bawah
-   ![alt text](image-10.png)
+   ![alt text](assets/image-10.png)
    NOTES: Perhatikan IP dibaris terakhir, gunakan IP dari Bedahulu buat bagian `cakra`
 4. `service bind9 restart`
 5. Masuk web console client (yang gambar laptop)
@@ -466,11 +466,11 @@ zone "2.72.10.in-addr.arpa" {
 3. `vi pasopati.it17.com`
    tambahin 2 baris, baris `ns1` sama `panah`
    NOTES: IP dari `ns1` itu IP dari Majapahit
-   ![alt text](image-11.png)
+   ![alt text](assets/image-11.png)
 4. `cd ..`
 5. `vi named.conf.options`
    edit jadi kek gini
-   ![alt text](image-14.png)
+   ![alt text](assets/image-14.png)
 6. `vi named.conf.local`
 7. edit zone pasopati jadi begini
 
@@ -491,7 +491,7 @@ NOTES: `10.72.2.5` itu IP dari Majapahit
 10. `cd /etc/bind`
 11. `vi named.conf.options`
     edit jadi kek gini
-    ![alt text](image-14.png)
+    ![alt text](assets/image-14.png)
 12. `vi named.conf.local`
     tambahin zone baru
 
@@ -505,7 +505,7 @@ zone "panah.pasopati.it17.com" {
 13. `mkdir panah && cd panah`
 14. `cp ../db.local panah.pasopati.it17.com`
     trus ganti jadi kek gini
-    ![alt text](image-13.png)
+    ![alt text](assets/image-13.png)
     Notes: `10.72.2.4` itu IP dari Kotalingga
 15. `service bind9 restart`
 16. Masuk web console client (yang gambar laptop)
@@ -529,7 +529,7 @@ zone "panah.pasopati.it17.com" {
 5. `cp panah.pasopati.it17.com log.panah.pasopati.it17.com`
 6. `vi log.panah.pasopati.it17.com`
    ganti jadi begini
-   ![alt text](image-15.png)
+   ![alt text](assets/image-15.png)
    Notes: `10.72.2.4` itu IP dari Kotalingga
 7. `service bind9 restart`
 8. Masuk web console client (yang gambar laptop)
@@ -546,17 +546,17 @@ zone "panah.pasopati.it17.com" {
 4. `vi named.conf.options`
    ubah bagian `forwarders` jadi kek gini
 
-   ![alt text](image-16.png)
+   ![alt text](assets/image-16.png)
 
 5. `service bind9 restart`
 6. Masuk web console node lain (bebas) asalkan file `/etc/resolv.conf` TIDAK ADA `nameserver 192.168.122.1` dan punya `nameserver 10.72.2.5`
    Notes: `10.72.2.5` itu IP Majapahit
 
-   ![alt text](image-18.png)
+   ![alt text](assets/image-18.png)
 
 7. `ping google.com`
 
-   ![alt text](image-17.png)
+   ![alt text](assets/image-17.png)
 
 ## SOAL 12
 
@@ -590,7 +590,7 @@ echo "Tanggal saat ini: $date<br>";
 4. `rm /var/www/html/index.html`
 5. `service apache2 start`
 6. `lynx localhost`
-   ![alt text](image-20.png)
+   ![alt text](assets/image-20.png)
 7. Lakukan hal yang sama untuk Tanjungkulai dan Bedahulu
 
 ## SOAL 13
@@ -611,7 +611,7 @@ a2enmod proxy proxy_balancer proxy_http lbmethod_byrequests lbmethod_bytraffic l
 4. `cd /etc/apache2/sites-available`
 5. `vi 000-default.conf`
    ubah jadi seperti ini
-   ![alt text](image-21.png)
+   ![alt text](assets/image-21.png)
    Notes:
    IP `10.72.2.2` itu Tanjungkulai
    IP `10.72.2.2` itu Bedahulu
@@ -620,9 +620,9 @@ a2enmod proxy proxy_balancer proxy_http lbmethod_byrequests lbmethod_bytraffic l
 7. Masuk web console client (yang gambar laptop)
 8. `apt install lynx -y`
 9. `lynx localhost` (lakukan 3 kali)
-   ![alt text](image-22.png)
-   ![alt text](image-23.png)
-   ![alt text](image-24.png)
+   ![alt text](assets/image-22.png)
+   ![alt text](assets/image-23.png)
+   ![alt text](assets/image-24.png)
    Jika berhasil maka nanti akan menampilkan ketiga webserver
    perhatikan disini berubah-rubah secara random dari Tanjungkulai lalu Bedahulu lalu Kotalingga, disini menunjukkan LB berhasil
 
@@ -721,30 +721,30 @@ ln -s /etc/nginx/sites-available/web /etc/nginx/sites-enabled/
 1. Masuk web console Solok
 2. Pertama kita akan benchmark load balancer apache2 dengan algoritma defaultnya (byrequests)
    `ab -n 100 -c 10 http://127.0.0.1/`
-   ![alt text](image-25.png)
+   ![alt text](assets/image-25.png)
 
    simpan hasil benchmark (bebas mau di ss ato di copy)
 
 3. Sekarang ganti algoritmanya
 4. `cd /etc/apache2/sites-available` `vi 000-default.con`
-   ![alt text](image-26.png)
+   ![alt text](assets/image-26.png)
    Perhatikan bagian `ProxySet`, disini kita bikin lbmethod jadi bytraffic
 5. `service apache2 restart`
 6. lalu kita benchmark lagi
    `ab -n 100 -c 10 http://127.0.0.1/`
 
-![alt text](image-30.png)
+![alt text](assets/image-30.png)
 simpan hasil benchmark
 
 7. Sekarang ganti lagi, `vi 000-default.conf`
-   ![alt text](image-28.png)
+   ![alt text](assets/image-28.png)
    kita ganti jadi bybusyness
 
 simpan hasil benchmark
 
 8. lalu kita benchmark lagi
    `ab -n 100 -c 10 http://127.0.0.1/`
-   ![alt text](image-29.png)
+   ![alt text](assets/image-29.png)
 9. Sekarang kita ganti load balancer dan webserver jadi nginx BALIK KE SOAL 14
 10. Setelah lanjut dari SOAL 14
 11. Masuk web console Solok
@@ -753,7 +753,7 @@ simpan hasil benchmark
 
 13. `vi /etc/nginx/sites-available/web`
     tambahin `least_conn;`
-    ![alt text](image-53.png)
+    ![alt text](assets/image-53.png)
 
 ## SOAL 16
 
@@ -761,30 +761,30 @@ simpan hasil benchmark
 2. `cd /etc/bind`
 3. `vi named.conf.local`
    tambahkan zone baru
-   ![alt text](image-32.png)
+   ![alt text](assets/image-32.png)
 4. `cd it17`
    1. `cp sudarsana.it17.com solok.it17.com`
    2. `vi solok.it17.com`
       lalu ganti nama domainnya menjadi solok.it17.com
-      ![alt text](image-31.png)
+      ![alt text](assets/image-31.png)
 5. `service bind9 restart`
 6. Masuk web console Solok
 7. `cd /etc/apache2/sites-available`
 8. `cp 000-default.conf solok.it17.com.conf`
 9. `vi solok.it17.com.conf`
    ganti `ServerName` dan `ServerAlias` seperti ini
-   ![alt text](image-33.png)
+   ![alt text](assets/image-33.png)
 10. `cd ..` `vi apache2.conf`
     lalu tambahkan line `ServerName solok.it17.com`
     bebas ditaro dibagian mana aja
-    ![alt text](image-34.png)
+    ![alt text](assets/image-34.png)
 
 11. `a2dissite 000-default.com`
 12. `a2ensite solok.it17.com`
 13. `service apache2 restart`
 14. Masuk ke web console client bebas (yang gambar laptop)
 15. `cat /etc/resolv.conf`
-    ![alt text](image-35.png)
+    ![alt text](assets/image-35.png)
     pastikan DNS Sriwijaya ada paling atas
 
     Notes:
@@ -794,9 +794,9 @@ simpan hasil benchmark
 
 16. `lynx solok.it17.com`
     coba 3 kali disini
-    ![alt text](image-22.png)
-    ![alt text](image-23.png)
-    ![alt text](image-24.png)
+    ![alt text](assets/image-22.png)
+    ![alt text](assets/image-23.png)
+    ![alt text](assets/image-24.png)
 
 ## SOAL 17
 
@@ -804,18 +804,18 @@ simpan hasil benchmark
 2. `cd /etc/apache2`
 3. `vi ports.conf`
    tambahkan line Listen 4696 (sesuai perhitungan soal)
-   ![alt text](image-36.png)
+   ![alt text](assets/image-36.png)
 4. `rm /var/www/html/*`
 5. `cd sites-available`
 6. `vi solok.it17.com`
    lalu ganti jadi `4696`disini
-   ![alt text](image-38.png)
+   ![alt text](assets/image-38.png)
 7. `service apache2 restart`
 8. Masuk web console client (yang gambar laptop)
 9. `lynx solok.it17.com`
-   ![alt text](image-39.png)
+   ![alt text](assets/image-39.png)
 10. `lynx solok.it17.com:4696`
-    ![alt text](image-40.png)
+    ![alt text](assets/image-40.png)
 
 ## SOAL 18
 
@@ -840,8 +840,8 @@ simpan hasil benchmark
 6. `service apache2 restart`
 7. Masuk web console client (yang gambar laptop)
 8. `lynx 10.72.1.3` IP dari Solok
-   ![alt text](image-45.png)
-   ![alt text](image-48.png)
+   ![alt text](assets/image-45.png)
+   ![alt text](assets/image-48.png)
 
 ## SOAL 19 dan SOAL 20
 
@@ -884,7 +884,7 @@ simpan hasil benchmark
 10. Masuk web console Sriwijaya
 11. `cd /etc/bind/ && vi named.conf.local`
 12. tambahkan zone baru
-    ![alt text](image-50.png)
+    ![alt text](assets/image-50.png)
 13. `cd it17`
 14. `vi sekiantterimakasih.it17.com`
 
@@ -912,4 +912,4 @@ Notes: `10.72.2.3` itu IP Bedahulu, sesuai kalian tadi settingnya di webserver m
 15. `service bind9 restart`
 16. Masuk ke client (yang gambar laptop)
 17. `lynx sekiantterimakasih.it17.com/worker2`
-    ![alt text](image-51.png)
+    ![alt text](assets/image-51.png)
