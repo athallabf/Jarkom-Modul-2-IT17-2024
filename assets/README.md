@@ -679,10 +679,10 @@ Kerjain soal no 15 dlu (apache benchmarking)
     lalu tambahkan line `ServerName solok.it17.com`
     bebas ditaro dibagian mana aja
     ![alt text](image-34.png)
-
-11. `service apache2 restart`
-12. Masuk ke web console client bebas (yang gambar laptop)
-13. `cat /etc/resolv.conf`
+11. `a2ensite solok.it17.com`
+12. `service apache2 restart`
+13. Masuk ke web console client bebas (yang gambar laptop)
+14. `cat /etc/resolv.conf`
     ![alt text](image-35.png)
     pastikan DNS Sriwijaya ada paling atas
 
@@ -691,8 +691,27 @@ Kerjain soal no 15 dlu (apache benchmarking)
     - `10.72.1.2` IP SRIWIJAYA
     - `10.72.2.5` IP MAJAPAHIT
 
-14. `lynx solok.it17.com`
+15. `lynx solok.it17.com`
     coba 3 kali disini
     ![alt text](image-22.png)
     ![alt text](image-23.png)
     ![alt text](image-24.png)
+
+## SOAL 17
+
+1. Masuk web console Solok
+2. `cd /etc/apache2`
+3. `vi ports.conf`
+   tambahkan line Listen 4696 (sesuai perhitungan soal)
+   ![alt text](image-36.png)
+4. `rm /var/www/html/*`
+5. `cd sites-available`
+6. `vi solok.it17.com`
+   lalu ganti jadi `4696`disini
+   ![alt text](image-38.png)
+7. `service apache2 restart`
+8. Masuk web console client (yang gambar laptop)
+9. `lynx solok.it17.com`
+   ![alt text](image-39.png)
+10. `lynx solok.it17.com:4696`
+    ![alt text](image-40.png)
