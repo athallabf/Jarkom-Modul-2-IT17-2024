@@ -1,4 +1,11 @@
-# DOKUMENTASI
+# DOKUMENTASI JARKOM PRAKTIKUM 2
+
+## ANGGOTA
+
+| Nama                        | NRP        |
+| --------------------------- | ---------- |
+| Athalla Barka Fadhil        | 5027231018 |
+| Jody Hezekiah Tanasa Sagala | 5027221050 |
 
 SOAL: [PRAKTIKUM-MODUL-2](https://docs.google.com/document/d/1_fe7aJ1Yq5xQLb7NjR_BoH00GFyinYweE9pLYxOzSzY/edit)
 
