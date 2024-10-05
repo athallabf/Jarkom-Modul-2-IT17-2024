@@ -1,6 +1,14 @@
 # DOKUMENTASI
 
-## PERSISTENT DISK (ALL DEVICES) IMPORTANT
+SOAL: [PRAKTIKUM-MODUL-2](https://docs.google.com/document/d/1_fe7aJ1Yq5xQLb7NjR_BoH00GFyinYweE9pLYxOzSzY/edit)
+
+---
+
+# IMPORTANT
+
+## PERSISTENT DISK (ALL NODES)
+
+---
 
 jalanin ini sekali aja di SEMUA NODES (kecuali Nusantara)
 Masuk web console
@@ -207,7 +215,15 @@ up echo nameserver 192.168.122.1 >> /etc/resolv.conf
 ```
 
 Notes:
-`nameserver 192.168.122.1` hanya digunakan untuk install2 package di awal, nantinya yang punya nameserver itu cuman Majapahit
+
+- `nameserver 192.168.122.1` hanya digunakan untuk install2 package di awal, nantinya yang punya nameserver itu cuman Majapahit
+- reload node setiap kali habis edit network configuration
+
+## SETUP CLIENT
+
+(yang gambar laptop)
+Masuk web consolenya
+`apt update && apt install dnsutils lynx -y`
 
 ## SOAL 2
 
