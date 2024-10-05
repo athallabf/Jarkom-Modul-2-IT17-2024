@@ -657,36 +657,36 @@ Kerjain soal no 15 dlu (apache benchmarking)
 ## SOAL 16
 
 1. Masuk web console Sriwijaya
-2. `cd /etc/bind/it17`
-3. `cd /etc/bind`
-4. `vi named.conf.local`
+2. `cd /etc/bind`
+3. `vi named.conf.local`
    tambahkan zone baru
    ![alt text](image-32.png)
-5. `cd it17`
-   `cp sudarsana.it17.com solok.it17.com`
-   lalu ganti nama domainnya menjadi solok.it17.com
-   ![alt text](image-31.png)
-6. `service bind9 restart`
-7. Masuk web console Solok
-8. `cd /etc/apache2/sites-available`
-9. `cp 000-default.conf solok.it17.com.conf`
-10. `vi solok.it17.com`
-    ganti `ServerName` dan `ServerAlias` seperti ini
-    ![alt text](image-33.png)
-11. `cd ..` `vi apache2.conf`
+4. `cd it17`
+   1. `cp sudarsana.it17.com solok.it17.com`
+   2. `vi solok.it17.com`
+      lalu ganti nama domainnya menjadi solok.it17.com
+      ![alt text](image-31.png)
+5. `service bind9 restart`
+6. Masuk web console Solok
+7. `cd /etc/apache2/sites-available`
+8. `cp 000-default.conf solok.it17.com.conf`
+9. `vi solok.it17.com.conf`
+   ganti `ServerName` dan `ServerAlias` seperti ini
+   ![alt text](image-33.png)
+10. `cd ..` `vi apache2.conf`
     lalu tambahkan line `ServerName solok.it17.com`
     bebas ditaro dibagian mana aja
     ![alt text](image-34.png)
 
-12. service bind9 restart
-13. Masuk ke web console client bebas (yang gambar laptop)
-14. `cat /etc/resolv.conf`
+11. service bind9 restart
+12. Masuk ke web console client bebas (yang gambar laptop)
+13. `cat /etc/resolv.conf`
     ![alt text](image-35.png)
     pastikan DNS Sriwijaya ada paling atas
     Notes:
     - `10.72.1.2` IP SRIWIJAYA
     - `10.72.2.5` IP MAJAPAHIT
-15. `lynx solok.it17.com`
+14. `lynx solok.it17.com`
     coba 3 kali disini
     ![alt text](image-22.png)
     ![alt text](image-23.png)
