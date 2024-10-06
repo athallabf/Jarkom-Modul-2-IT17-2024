@@ -775,7 +775,7 @@ simpan hasil benchmark
 12. benchmark lagi `ab -n 100 -c 10 http://127.0.0.1/`
     simpan hasil benchmark
 
-13. `vi /etc/nginx/sites-available/web`
+13. `vi /etc/nginx/sites-available/load-balancer`
     tambahin `least_conn;`
     ![alt text](assets/image-53.png)
 
