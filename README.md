@@ -779,6 +779,9 @@ simpan hasil benchmark
     tambahin `least_conn;`
     ![alt text](assets/image-53.png)
 
+14. benchmark lagi `ab -n 100 -c 10 http://127.0.0.1/`
+    simpan hasil benchmark
+
 ## SOAL 16
 
 1. Masuk web console Sriwijaya
